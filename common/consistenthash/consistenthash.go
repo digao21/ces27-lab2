@@ -20,9 +20,24 @@ type Ring struct {
 func (r *Ring) search(key string) int {
     /////////////////////////
     // YOUR CODE GOES HERE //
-    /////////////////////////
+    /////////////////////////    
+
+    id  := hashId(key)    
+    for i:=0; i < len(r.Nodes); i++ {
+        if (id < r.Nodes[i].HashId) {
+            return i;
+        }
+    }
 
     return 0
+}
+
+func dif(a,b uint32) uint32 {
+    if (a < b) {
+        return b - a
+    }
+
+    return a - b
 }
 
 // NewRing will create a new Ring object and return a pointer to it.
